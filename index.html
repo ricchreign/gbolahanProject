@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Omogbolahan </title>
+  <meta name="description" content="Full-Stack Developer & Digital Craftsman. Building scalable systems, beautiful interfaces, and intelligent products." />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- ✅ EmailJS SDK — do not remove -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            display: ['"Playfair Display"', 'serif'],
+            mono: ['"DM Mono"', 'monospace'],
+            sans: ['"DM Sans"', 'sans-serif'],
+          },
+          colors: {
+            obsidian: '#0a0a0a',
+            chalk: '#f5f5f0',
+            ash: '#e8e8e2',
+            silver: '#9a9a94',
+            iron: '#3a3a36',
+          },
+          animation: {
+            'fade-up': 'fadeUp 0.7s ease both',
+            'fade-in': 'fadeIn 0.5s ease both',
+            'slide-in': 'slideIn 0.6s ease both',
+            'blink': 'blink 1.2s step-end infinite',
+          },
+          keyframes: {
+            fadeUp: { '0%': { opacity: '0', transform: 'translateY(28px)' }, '100%': { opacity: '1', transform: 'translateY(0)' } },
+            fadeIn: { '0%': { opacity: '0' }, '100%': { opacity: '1' } },
+            slideIn: { '0%': { opacity: '0', transform: 'translateX(-20px)' }, '100%': { opacity: '1', transform: 'translateX(0)' } },
+            blink: { '0%,100%': { opacity: '1' }, '50%': { opacity: '0' } },
+          }
+        }
+      }
+    }
+  </script>
+
+</head>
+<body>
+
+<!-- Custom cursor (desktop only) -->
+<div class="cursor hidden lg:block" id="cursor"></div>
+<div class="cursor-ring hidden lg:block" id="cursorRing"></div>
+
+<!-- WhatsApp Floating Button -->
+<a href="https://wa.link/t46681" target="_blank" rel="noopener" class="wa-bubble" title="Chat on WhatsApp" aria-label="Chat on WhatsApp">
+  <svg width="26" height="26" viewBox="0 0 24 24" fill="#0a0a0a">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+</a>
+
+<!-- Back to top -->
+<button class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">
+  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#f5f5f0" stroke-width="1.5">
+    <path d="M8 12V4M4 7l4-4 4 4"/>
+  </svg>
+</button>
+
+<!--=========== NAV ====== -->
+<nav>
+  <div class="max-w-7xl mx-auto px-6 lg:px-12 flex items-center justify-between h-16">
+    <!-- Logo -->
+    <a href="#" class="flex items-center gap-3 group">
+      <div class="w-8 h-8 border border-chalk/30 flex items-center justify-center group-hover:border-chalk/70 transition-colors">
+        <span class="font-mono text-xs text-chalk/70 group-hover:text-chalk transition-colors">YA!</span>
+      </div>
+      <span class="font-display text-sm font-bold tracking-wide hidden sm:block">YADIR</span>
+    </a>
+
+    <!-- Desktop links -->
+    <div class="hidden md:flex items-center gap-8">
+      <a href="#about" class="font-mono text-xs tracking-widest text-silver hover:text-chalk transition-colors uppercase">About</a>
+      <a href="#skills" class="font-mono text-xs tracking-widest text-silver hover:text-chalk transition-colors uppercase">Skills</a>
+      <a href="#projects" class="font-mono text-xs tracking-widest text-silver hover:text-chalk transition-colors uppercase">Work</a>
+      <a href="#contact" class="font-mono text-xs tracking-widest text-silver hover:text-chalk transition-colors uppercase">Contact</a>
+      <a href="#contact" class="ml-4 border border-chalk/30 hover:border-chalk hover:bg-chalk hover:text-obsidian px-5 py-2 font-mono text-xs tracking-widest uppercase transition-all">
+        Hire Me
+      </a>
+    </div>
+
+    <!-- Mobile toggle -->
+    <button class="md:hidden p-2" id="menuBtn" aria-label="Open menu">
+      <div class="space-y-1.5">
+        <div class="w-6 h-px bg-chalk transition-all" id="bar1"></div>
+        <div class="w-6 h-px bg-chalk transition-all" id="bar2"></div>
+        <div class="w-4 h-px bg-chalk transition-all" id="bar3"></div>
+      </div>
+    </button>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="flex-col gap-0 border-t border-chalk/10 md:hidden bg-obsidian">
+    <a href="#about" class="mobile-link px-6 py-4 font-mono text-xs tracking-widest text-silver hover:text-chalk hover:bg-chalk/5 transition-all block uppercase">About</a>
+    <a href="#skills" class="mobile-link px-6 py-4 font-mono text-xs tracking-widest text-silver hover:text-chalk hover:bg-chalk/5 transition-all block uppercase">Skills</a>
+    <a href="#projects" class="mobile-link px-6 py-4 font-mono text-xs tracking-widest text-silver hover:text-chalk hover:bg-chalk/5 transition-all block uppercase">Work</a>
+    <a href="#contact" class="mobile-link px-6 py-4 font-mono text-xs tracking-widest text-silver hover:text-chalk hover:bg-chalk/5 transition-all block uppercase">Contact</a>
+    <div class="px-6 py-4"><a href="#contact" class="block text-center border border-chalk/30 hover:border-chalk hover:bg-chalk hover:text-obsidian px-5 py-3 font-mono text-xs tracking-widest uppercase transition-all">Hire Me</a></div>
+  </div>
+</nav>
+
+<!-- ═══════════════════════════════ HERO ═══════════════════════════════ -->
+<section class="min-h-screen flex flex-col justify-center relative overflow-hidden pt-16" id="hero">
+
+  <!-- Grid lines background -->
+  <div class="absolute inset-0 opacity-[0.04] z-0"
+    style="background-image: linear-gradient(#f5f5f0 1px,transparent 1px),linear-gradient(90deg,#f5f5f0 1px,transparent 1px); background-size: 60px 60px;">
+  </div>
+
+  <!-- Big background text -->
+  <div class="absolute bottom-0 left-0 right-0 overflow-hidden pointer-events-none select-none z-0">
+    <div class="font-display font-black text-[20vw] leading-none text-chalk/[0.025] whitespace-nowrap">DEVELOPER</div>
+  </div>
+
+  <div class="max-w-7xl mx-auto px-6 lg:px-12 w-full z-10">
+    <div class="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center min-h-[70vh] lg:min-h-[80vh] py-10 lg:py-0">
+
+      <!-- Left: Main content -->
+      <div class="lg:col-span-7 space-y-5 lg:space-y-8">
+        <div class="animate-fade-in" style="animation-delay:0.1s">
+          <div class="flex items-center gap-3 mb-8">
+            <div class="w-8 h-px bg-chalk/40"></div>
+            <span class="font-mono text-xs tracking-[0.2em] text-silver uppercase">Available for projects</span>
+            <div class="w-2 h-2 rounded-full bg-green-500/60 animate-pulse"></div>
+          </div>
+        </div>
+
+        <div class="animate-fade-up" style="animation-delay:0.2s">
+          <h1 class="font-display font-black leading-[0.95] text-chalk">
+            <span class="block text-[clamp(36px,8vw,96px)] glitch" data-text="Adewole">Adewole</span>
+            <span class="block text-[clamp(36px,8vw,96px)] italic text-yellow">Omogbolahan</span>
+            <span class="block text-[clamp(36px,8vw,96px)] italic text-silver">Marvelous</span>
+          </h1>
+        </div>
+
+        <div class="animate-fade-up" style="animation-delay:0.35s">
+          <p class="font-mono text-sm text-silver/80 max-w-lg leading-relaxed">
+            Full-Stack Developer & Digital Craftsman at <span class="text-chalk">YADIR</span>. I build real products — from React Frontends to Django backends — with a focus on solving problems that actually matter.
+          </p>
+        </div>
+
+        <div class="animate-fade-up flex flex-wrap gap-4" style="animation-delay:0.5s">
+          <a href="#projects" class="bg-chalk text-obsidian px-8 py-3.5 font-mono text-xs tracking-widest uppercase hover:bg-ash transition-colors">
+            View My Work →
+          </a>
+          <a href="#contact" class="border border-chalk/30 text-chalk px-8 py-3.5 font-mono text-xs tracking-widest uppercase hover:border-chalk hover:bg-chalk/5 transition-all">
+            Let's Talk
+          </a>
+        </div>
+
+        <!-- Terminal line -->
+        <div class="animate-fade-up" style="animation-delay:0.65s">
+          <div class="font-mono text-xs text-silver/50 flex items-center gap-2">
+            <span class="text-chalk/40">$</span>
+            <span id="typed-text"></span>
+            <span class="w-2 h-4 bg-chalk/50 animate-blink inline-block"></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Stats -->
+      <div class="lg:col-span-5 animate-fade-in mt-4 lg:mt-0" style="animation-delay:0.7s">
+        <div class="grid grid-cols-2 gap-px bg-chalk/10">
+          <div class="bg-obsidian p-5 lg:p-8 hover:bg-chalk/[0.03] transition-colors">
+            <div class="font-display text-4xl lg:text-5xl font-black text-chalk counter-num" data-target="11">0</div>
+            <div class="font-mono text-xs text-silver/60 mt-2 tracking-wider uppercase">Projects<br>Shipped</div>
+          </div>
+          <div class="bg-obsidian p-5 lg:p-8 hover:bg-chalk/[0.03] transition-colors">
+            <div class="font-display text-4xl lg:text-5xl font-black text-chalk counter-num" data-target="13">0</div>
+            <div class="font-mono text-xs text-silver/60 mt-2 tracking-wider uppercase">GitHub<br>Repos</div>
+          </div>
+          <div class="bg-obsidian p-5 lg:p-8 hover:bg-chalk/[0.03] transition-colors">
+            <div class="flex items-center gap-2 mb-2">
+              <span class="w-3 h-3 rounded-full bg-green-500 animate-pulse inline-block"></span>
+              <span class="font-display text-2xl lg:text-3xl font-black text-chalk">Open</span>
+            </div>
+            <div class="font-mono text-xs text-silver/60 mt-2 tracking-wider uppercase">Currently<br>Available</div>
+          </div>
+          <div class="bg-obsidian p-5 lg:p-8 hover:bg-chalk/[0.03] transition-colors">
+            <div class="font-display text-4xl lg:text-5xl font-black text-chalk">∞</div>
+            <div class="font-mono text-xs text-silver/60 mt-2 tracking-wider uppercase">Lines of<br>Passion</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Scroll hint -->
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 animate-fade-in" style="animation-delay:1.2s">
+    <div class="font-mono text-[10px] tracking-widest text-silver/40 uppercase">Scroll</div>
+    <div class="w-px h-12 bg-gradient-to-b from-silver/40 to-transparent animate-pulse"></div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ MARQUEE ═══════════════════════════════ -->
+<div class="border-y border-chalk/10 py-5 overflow-hidden relative z-10 marquee-wrap">
+  <div class="marquee-track">
+    <div class="flex items-center gap-12 pr-12 font-mono text-xs tracking-widest text-silver/40 uppercase whitespace-nowrap">
+      <span>React</span><span class="text-chalk/20">✦</span>
+      <span>TypeScript</span><span class="text-chalk/20">✦</span>
+      <span>SQLite</span><span class="text-chalk/20">✦</span>
+      <span>Next.js</span><span class="text-chalk/20">✦</span>
+      <span>Django</span><span class="text-chalk/20">✦</span>
+      <span>Tailwind CSS</span><span class="text-chalk/20">✦</span>
+      <span>REST APIs</span><span class="text-chalk/20">✦</span>
+      <span>Vercel</span><span class="text-chalk/20">✦</span>
+      <span>Git & GitHub</span><span class="text-chalk/20">✦</span>
+    </div>
+    <div class="flex items-center gap-12 pr-12 font-mono text-xs tracking-widest text-silver/40 uppercase whitespace-nowrap" aria-hidden="true">
+      <span>React</span><span class="text-chalk/20">✦</span>
+      <span>TypeScript</span><span class="text-chalk/20">✦</span>
+      <span>SQLite</span><span class="text-chalk/20">✦</span>
+      <span>Next.js</span><span class="text-chalk/20">✦</span>
+      <span>Django</span><span class="text-chalk/20">✦</span>
+      <span>Tailwind CSS</span><span class="text-chalk/20">✦</span>
+      <span>REST APIs</span><span class="text-chalk/20">✦</span>
+      <span>Vercel</span><span class="text-chalk/20">✦</span>
+      <span>Git & GitHub</span><span class="text-chalk/20">✦</span>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════ ABOUT ═══════════════════════════════ -->
+<section id="about" class="py-16 lg:py-32 relative z-10">
+  <div class="max-w-7xl mx-auto px-6 lg:px-12">
+    <div class="grid lg:grid-cols-12 gap-10 lg:gap-16 items-start">
+
+      <!-- Left: Section label + image placeholder -->
+      <div class="lg:col-span-5 reveal">
+        <div class="flex items-center gap-3 mb-12">
+          <span class="font-mono text-xs tracking-widest text-silver/50 uppercase">01 — About</span>
+          <div class="flex-1 h-px bg-chalk/10"></div>
+        </div>
+
+        <!-- Profile card -->
+        <div class="relative">
+          <div class="aspect-[4/5] bg-iron/40 border border-chalk/10 flex flex-col items-center justify-center relative overflow-hidden">
+            <!-- Abstract initials art -->
+            <div class="absolute inset-0 flex items-center justify-center">
+              <div class="font-display font-black text-[140px] leading-none text-chalk/[0.04] select-none">BS</div>
+            </div>
+            <div class="relative z-15 text-center space-y-3">
+              <!-- <div class="w-30 h-20 border border-chalk/20 rounded-full mx-auto flex items-center justify-center">
+                <span class="font-display font-black text-2xl text-chalk/80">BOS</span>
+              </div> -->
+              <div class="font-mono text-xs text-silver/50 tracking-widest"><img src="image/profile.jpeg"></div>
+            </div>
+
+            <!-- Corner decorations -->
+            <div class="absolute top-4 left-4 w-6 h-6 border-l border-t border-chalk/20"></div>
+            <div class="absolute top-4 right-4 w-6 h-6 border-r border-t border-chalk/20"></div>
+            <div class="absolute bottom-4 left-4 w-6 h-6 border-l border-b border-chalk/20"></div>
+            <div class="absolute bottom-4 right-4 w-6 h-6 border-r border-b border-chalk/20"></div>
+          </div>
+
+          <!-- Offset label -->
+          <div class="absolute -bottom-px -right-px bg-chalk text-obsidian px-4 py-2">
+            <div class="font-mono text-xs tracking-widest uppercase">Open to work</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Bio -->
+      <div class="lg:col-span-7 reveal" style="transition-delay:0.15s">
+        <h2 class="font-display font-black text-[clamp(28px,5vw,60px)] leading-tight text-chalk mb-6 lg:mb-8">
+          Crafting digital<br><em class="text-silver">experiences</em> that<br>matter.
+        </h2>
+
+        <div class="space-y-5 font-sans text-silver/70 text-base leading-relaxed max-w-lg">
+          <p>
+            I'm <span class="text-chalk font-medium">Adewole Omogbolahan Marvelous</span>, a Full-Stack Developer<span class="text-chalk font-medium"></span>. I build web applications end-to-end — from React frontends to Python/Django backends connected to SQLite databases.
+          </p>
+          <p>
+            On my project, i built an e-commerce websites that help businesses showcase products professionally, attract customers online, and make selling easier and more efficient. A real problem I cared about solving. I believe the best way to grow as a developer is to build things that actually matter.
+          </p>
+          <p>
+            Based in Lagos, Nigeria. I'm currently growing my skills, shipping real projects, and open to opportunities that will challenge and develop me further.
+          </p>
+        </div>
+
+        <!-- Attributes -->
+        <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 mt-10">
+          <div class="border border-chalk/10 p-4 hover:border-chalk/30 transition-colors">
+            <div class="font-mono text-[10px] text-silver/40 tracking-wider uppercase mb-1">Location</div>
+            <div class="font-sans text-sm text-chalk">Lagos, Nigeria</div>
+          </div>
+          <div class="border border-chalk/10 p-4 hover:border-chalk/30 transition-colors">
+            <div class="font-mono text-[10px] text-silver/40 tracking-wider uppercase mb-1">Focus</div>
+            <div class="font-sans text-sm text-chalk">Full-Stack Dev</div>
+          </div>
+          <div class="border border-chalk/10 p-4 hover:border-chalk/30 transition-colors">
+            <div class="font-mono text-[10px] text-silver/40 tracking-wider uppercase mb-1">Status</div>
+            <div class="font-sans text-sm text-chalk flex items-center gap-1.5">
+              <span class="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></span> Available
+            </div>
+          </div>
+        </div>
+
+        <a href="mailto:adewoleomogbolahan@gmail.com?subject=CV%20Request&body=Hi%20Gbolahan%2C%20I%20came%20across%20your%20portfolio%20and%20would%20love%20to%20receive%20a%20copy%20of%20your%20CV.%20Thank%20you." class="inline-flex items-center gap-2 mt-8 font-mono text-xs tracking-widest text-silver/60 hover:text-chalk uppercase transition-colors group">
+          <span>Request CV</span>
+          <svg class="w-3 h-3 group-hover:translate-y-0.5 transition-transform" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M6 1v8M2 7l4 4 4-4"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ SKILLS ═══════════════════════════════ -->
+<section id="skills" class="py-16 lg:py-32 bg-chalk/[0.02] relative z-10 border-y border-chalk/5">
+  <div class="max-w-7xl mx-auto px-6 lg:px-12">
+
+    <div class="flex items-center gap-3 mb-10 lg:mb-16 reveal">
+      <span class="font-mono text-xs tracking-widest text-silver/50 uppercase">02 — Skills</span>
+      <div class="flex-1 h-px bg-chalk/10"></div>
+    </div>
+
+    <div class="grid lg:grid-cols-2 gap-10 lg:gap-16">
+
+      <!-- Technical skills -->
+      <div class="reveal">
+        <h3 class="font-display font-bold text-2xl text-chalk mb-10">Technical Proficiency</h3>
+        <div class="space-y-7">
+          <div class="skill-item">
+            <div class="flex justify-between mb-2">
+              <span class="font-mono text-xs text-silver/70 tracking-wider">React / Next.js</span>
+              <span class="font-mono text-xs text-silver/40">92%</span>
+            </div>
+            <div class="skill-bar"><div class="skill-fill" style="transform:scaleX(0.92)"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="flex justify-between mb-2">
+              <span class="font-mono text-xs text-silver/70 tracking-wider">Python / Django</span>
+              <span class="font-mono text-xs text-silver/40">88%</span>
+            </div>
+            <div class="skill-bar"><div class="skill-fill" style="transform:scaleX(0.88)"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="flex justify-between mb-2">
+              <span class="font-mono text-xs text-silver/70 tracking-wider">TypeScript</span>
+              <span class="font-mono text-xs text-silver/40">85%</span>
+            </div>
+            <div class="skill-bar"><div class="skill-fill" style="transform:scaleX(0.85)"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="flex justify-between mb-2">
+              <span class="font-mono text-xs text-silver/70 tracking-wider">SQLite</span>
+              <span class="font-mono text-xs text-silver/40">82%</span>
+            </div>
+            <div class="skill-bar"><div class="skill-fill" style="transform:scaleX(0.82)"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="flex justify-between mb-2">
+              <span class="font-mono text-xs text-silver/70 tracking-wider">Postman</span>
+              <span class="font-mono text-xs text-silver/40">80%</span>
+            </div>
+            <div class="skill-bar"><div class="skill-fill" style="transform:scaleX(0.80)"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="flex justify-between mb-2">
+              <span class="font-mono text-xs text-silver/70 tracking-wider">HTML / CSS / Tailwind</span>
+              <span class="font-mono text-xs text-silver/40">95%</span>
+            </div>
+            <div class="skill-bar"><div class="skill-fill" style="transform:scaleX(0.95)"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Competencies -->
+      <div class="reveal" style="transition-delay:0.15s">
+        <h3 class="font-display font-bold text-2xl text-chalk mb-10">Core Competencies</h3>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div class="group border border-chalk/10 p-5 hover:border-chalk/30 hover:bg-chalk/[0.03] transition-all cursor-default">
+            <div class="text-2xl mb-3">⚙️</div>
+            <div class="font-sans font-medium text-sm text-chalk mb-1">System Architecture</div>
+            <div class="font-mono text-xs text-silver/40 leading-relaxed">Designing scalable, maintainable backend systems</div>
+          </div>
+          <div class="group border border-chalk/10 p-5 hover:border-chalk/30 hover:bg-chalk/[0.03] transition-all cursor-default">
+            <div class="text-2xl mb-3">🎨</div>
+            <div class="font-sans font-medium text-sm text-chalk mb-1">UI/UX Engineering</div>
+            <div class="font-mono text-xs text-silver/40 leading-relaxed">Pixel-perfect, accessible, responsive interfaces</div>
+          </div>
+          <div class="group border border-chalk/10 p-5 hover:border-chalk/30 hover:bg-chalk/[0.03] transition-all cursor-default">
+            <div class="text-2xl mb-3">🔌</div>
+            <div class="font-sans font-medium text-sm text-chalk mb-1">API Development</div>
+            <div class="font-mono text-xs text-silver/40 leading-relaxed">REST & GraphQL APIs with auth & documentation</div>
+          </div>
+          <div class="group border border-chalk/10 p-5 hover:border-chalk/30 hover:bg-chalk/[0.03] transition-all cursor-default">
+            <div class="text-2xl mb-3">🚀</div>
+            <div class="font-sans font-medium text-sm text-chalk mb-1">Performance Opt.</div>
+            <div class="font-mono text-xs text-silver/40 leading-relaxed">Lighthouse scores 90+, lazy loading, caching</div>
+          </div>
+          <div class="group border border-chalk/10 p-5 hover:border-chalk/30 hover:bg-chalk/[0.03] transition-all cursor-default">
+            <div class="text-2xl mb-3">🔒</div>
+            <div class="font-sans font-medium text-sm text-chalk mb-1">Security & Auth</div>
+            <div class="font-mono text-xs text-silver/40 leading-relaxed">JWT, OAuth2, encryption best practices</div>
+          </div>
+          <div class="group border border-chalk/10 p-5 hover:border-chalk/30 hover:bg-chalk/[0.03] transition-all cursor-default">
+            <div class="text-2xl mb-3">☁️</div>
+            <div class="font-sans font-medium text-sm text-chalk mb-1">Cloud Deployment</div>
+            <div class="font-mono text-xs text-silver/40 leading-relaxed">Vercel, AWS, Heroku, GitHub Actions CI/CD</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ PROJECTS ═══════════════════════════════ -->
+<section id="projects" class="py-16 lg:py-32 relative z-10">
+  <div class="max-w-7xl mx-auto px-6 lg:px-12">
+
+    <div class="flex items-center justify-between mb-10 lg:mb-16 reveal">
+      <div class="flex items-center gap-3">
+        <span class="font-mono text-xs tracking-widest text-silver/50 uppercase">03 — Work</span>
+        <div class="w-24 h-px bg-chalk/10"></div>
+      </div>
+      <a href="#" class="font-mono text-xs tracking-widest text-silver/50 hover:text-chalk uppercase transition-colors hidden sm:block">All Projects →</a>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-chalk/10">
+
+      <!-- Project 1 — JAMB/WAEC/NECO Tutorial Site -->
+      <div class="project-card bg-obsidian p-8 reveal group" style="transition-delay:0s">
+        <div class="flex justify-between items-start mb-6">
+          <div class="font-mono text-xs text-silver/40 tracking-wider uppercase">01</div>
+          <div class="flex gap-2">
+            <span class="font-mono text-[10px] bg-chalk/5 text-silver/50 px-2 py-1 tracking-widest uppercase">DJANGO</span>
+            <span class="font-mono text-[10px] bg-chalk/5 text-silver/50 px-2 py-1 tracking-widest uppercase">SQLite</span>
+          </div>
+        </div>
+        <h4 class="font-display font-bold text-xl text-chalk mb-3 group-hover:text-ash transition-colors">
+          E-commerce Backend API
+        </h4>
+        <p class="font-sans text-sm text-silver/60 leading-relaxed mb-6">
+          Built a scalable e-commerce backend, using Django and Django REST Framework, implementing user authentication, product management, cart functionality, and order processing with database integration.
+        </p>
+        <div class="flex gap-4 pt-4 border-t border-chalk/10">
+          <span class="font-mono text-xs text-silver/30 tracking-wider uppercase italic">Check My Github</span>
+          <a href="https://github.com/ricchreign/winnerscommerce" target="_blank" rel="noopener" class="font-mono text-xs text-silver/50 hover:text-chalk transition-colors tracking-wider uppercase">GitHub →</a>
+        </div>
+      </div>
+
+      <!-- Project 2 — Grocery Store -->
+      <div class="project-card bg-obsidian p-8 reveal group" style="transition-delay:0.1s">
+        <div class="flex justify-between items-start mb-6">
+          <div class="font-mono text-xs text-silver/40 tracking-wider uppercase">02</div>
+          <div class="flex gap-2 flex-wrap">
+            <span class="font-mono text-[10px] bg-chalk/5 text-silver/50 px-2 py-1 tracking-widest uppercase">HTML</span>
+            <span class="font-mono text-[10px] bg-chalk/5 text-silver/50 px-2 py-1 tracking-widest uppercase">CSS</span>
+            <span class="font-mono text-[10px] bg-chalk/5 text-silver/50 px-2 py-1 tracking-widest uppercase">JS</span>
+          </div>
+        </div>
+        <h4 class="font-display font-bold text-xl text-chalk mb-3 group-hover:text-ash transition-colors">
+          Modern Grocery Store Website UI Design & Landing Page 
+        </h4>
+        <p class="font-sans text-sm text-silver/60 leading-relaxed mb-6">
+          Built a clean and structured e-commerce UI layout, focused on usability, accessibility, and responsive performance.
+        </p>
+        <div class="flex gap-4 pt-4 border-t border-chalk/10">
+          <span class="font-mono text-xs text-silver/30 tracking-wider uppercase italic">Open Project</span>
+          <a href="https://github.com/ricchreign/groceryStoreProject" target="_blank" rel="noopener" class="font-mono text-xs text-silver/50 hover:text-chalk transition-colors tracking-wider uppercase">Project →</a>
+        </div>
+      </div>
+
+      <!-- Project 3 -library -->
+        <div class="project-card bg-obsidian p-8 reveal group" style="transition-delay:0.2s">
+       <div class="flex justify-between items-start mb-6">
+          <div class="font-mono text-xs text-silver/40 tracking-wider uppercase">03</div>
+          <div class="flex gap-2">
+            <span class="font-mono text-[10px] bg-chalk/5 text-silver/50 px-2 py-1 tracking-widest uppercase">DJANGO</span>
+            <span class="font-mono text-[10px] bg-chalk/5 text-silver/50 px-2 py-1 tracking-widest uppercase">SQLite</span>
+          </div>
+        </div>
+        <h4 class="font-display font-bold text-xl text-chalk mb-3 group-hover:text-ash transition-colors">
+          BookHub Online Library Backend
+        </h4>
+        <p class="font-sans text-sm text-silver/60 leading-relaxed mb-6">
+          Built a backend system for an online library and book rental platform, using Django and Django REST Framework, implementing user authentication, book management,
+          rental processing, and database integration.
+        <div class="flex gap-4 pt-4 border-t border-chalk/10">
+          <span class="font-mono text-xs text-silver/30 tracking-wider uppercase italic">Check My Github</span>
+          <a href="https://github.com/ricchreign/winnersbookhub" target="_blank" rel="noopener" class="font-mono text-xs text-silver/50 hover:text-chalk transition-colors tracking-wider uppercase">GitHub →</a>
+        </div>
+      </div>
+
+      <!-- Project 4 - Real Estate -->
+       <div class="project-card bg-obsidian p-8 reveal group" style="transition-delay:0.1s">
+        <div class="flex justify-between items-start mb-6">
+          <div class="font-mono text-xs text-silver/40 tracking-wider uppercase">04</div>
+          <div class="flex gap-2 flex-wrap">
+            <span class="font-mono text-[10px] bg-chalk/5 text-silver/50 px-2 py-1 tracking-widest uppercase">HTML</span>
+            <span class="font-mono text-[10px] bg-chalk/5 text-silver/50 px-2 py-1 tracking-widest uppercase">CSS</span>
+            <span class="font-mono text-[10px] bg-chalk/5 text-silver/50 px-2 py-1 tracking-widest uppercase">JS</span>
+          </div>
+        </div>
+        <h4 class="font-display font-bold text-xl text-chalk mb-3 group-hover:text-ash transition-colors">
+           Modern Real Estate Landing Page 
+        </h4>
+        <p class="font-sans text-sm text-silver/60 leading-relaxed mb-6">
+         Developed a responsive real estate website with optimized layout and design
+        </p>
+        <div class="flex gap-4 pt-4 border-t border-chalk/10">
+          <span class="font-mono text-xs text-silver/30 tracking-wider uppercase italic">Open Project</span>
+          <a href="https://project-real-estate.vercel.app/" target="_blank" rel="noopener" class="font-mono text-xs text-silver/50 hover:text-chalk transition-colors tracking-wider uppercase">Project →</a>
+        </div>
+      </div>
+
+     
+      <!-- Project 5 -->
+       <div class="project-card bg-obsidian p-8 reveal group" style="transition-delay:0.1s">
+        <div class="flex justify-between items-start mb-6">
+          <div class="font-mono text-xs text-silver/40 tracking-wider uppercase">05</div>
+          <div class="flex gap-2">
+            <span class="font-mono text-[10px] bg-chalk/5 text-silver/50 px-2 py-1 tracking-widest uppercase">DJANGO</span>
+            <span class="font-mono text-[10px] bg-chalk/5 text-silver/50 px-2 py-1 tracking-widest uppercase">SQLite</span>
+          </div>
+        </div>
+        <h4 class="font-display font-bold text-xl text-chalk mb-3 group-hover:text-ash transition-colors">
+          Modern Restaurant Website UI & Responsive Landing Page
+        </h4>
+        <p class="font-sans text-sm text-silver/60 leading-relaxed mb-6">
+         Designed and developed a responsive restaurant website with a modern UI and implemented mobile design for seamless user experience across devices
+        </p>
+        <div class="flex gap-4 pt-4 border-t border-chalk/10">
+          <span class="font-mono text-xs text-silver/30 tracking-wider uppercase italic">Open Project</span>
+          <a href="https://cafeuproject.vercel.app/" target="_blank" rel="noopener" class="font-mono text-xs text-silver/50 hover:text-chalk transition-colors tracking-wider uppercase">Project →</a>
+        </div>
+      </div>
+
+
+      <!-- Project 6 — CTA -->
+      <div class="bg-chalk text-obsidian p-8 reveal flex flex-col justify-between group md:col-span-2 lg:col-span-3" style="transition-delay:0.3s">
+        <div>
+          <div class="font-mono text-xs text-iron/50 tracking-wider uppercase mb-6">More on the way</div>
+          <h4 class="font-display font-bold text-xl text-obsidian mb-3">Growing one project at a time.</h4>
+          <p class="font-sans text-sm text-iron/70 leading-relaxed max-w-lg">
+            I'm early in my journey and focused on building real, useful things rather than padding a portfolio with projects I didn't actually make. If you want to collaborate or give me an opportunity to grow — I'm all in.
+          </p>
+        </div>
+        <a href="#contact" class="mt-8 inline-flex items-center gap-2 border border-obsidian/20 hover:bg-obsidian hover:text-chalk px-6 py-3 font-mono text-xs tracking-widest uppercase transition-all w-fit">
+          Let's Work Together →
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════ SERVICES ═══════════════════════════════ -->
+<section class="py-16 lg:py-32 border-y border-chalk/5 bg-chalk/[0.015] relative z-10">
+  <div class="max-w-7xl mx-auto px-6 lg:px-12">
+    <div class="flex items-center gap-3 mb-10 lg:mb-16 reveal">
+      <span class="font-mono text-xs tracking-widest text-silver/50 uppercase">04 — Services</span>
+      <div class="flex-1 h-px bg-chalk/10"></div>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div class="reveal" style="transition-delay:0s">
+        <div class="text-3xl mb-4">🏗️</div>
+        <h4 class="font-display font-bold text-lg text-chalk mb-3">Web Development</h4>
+        <p class="font-sans text-sm text-silver/60 leading-relaxed">End-to-end web applications built with modern frameworks, clean code, and scalable architecture.</p>
+      </div>
+      <div class="reveal" style="transition-delay:0.1s">
+        <div class="text-3xl mb-4">📱</div>
+        <h4 class="font-display font-bold text-lg text-chalk mb-3">Mobile-First Design</h4>
+        <p class="font-sans text-sm text-silver/60 leading-relaxed">Fully responsive, touch-optimized interfaces that look stunning on every screen size and device.</p>
+      </div>
+      <div class="reveal" style="transition-delay:0.2s">
+        <div class="text-3xl mb-4">🔗</div>
+        <h4 class="font-display font-bold text-lg text-chalk mb-3">API & Backend</h4>
+        <p class="font-sans text-sm text-silver/60 leading-relaxed">Robust REST and GraphQL APIs, database design, authentication systems, and server optimization.</p>
+      </div>
+      <div class="reveal" style="transition-delay:0.3s">
+        <div class="text-3xl mb-4">🧩</div>
+        <h4 class="font-display font-bold text-lg text-chalk mb-3">Technical Consulting</h4>
+        <p class="font-sans text-sm text-silver/60 leading-relaxed">Code reviews, architecture planning, tech stack selection, and mentorship for growing teams.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ OPEN SOURCE ═══════════════════════════════ -->
+<section class="py-16 lg:py-32 relative z-10">
+  <div class="max-w-7xl mx-auto px-6 lg:px-12">
+
+    <div class="flex items-center gap-3 mb-10 lg:mb-16 reveal">
+      <span class="font-mono text-xs tracking-widest text-silver/50 uppercase">05 — GitHub</span>
+      <div class="flex-1 h-px bg-chalk/10"></div>
+    </div>
+
+    <div class="grid lg:grid-cols-12 gap-10 items-center">
+
+      <!-- Left: Honest statement -->
+      <div class="lg:col-span-7 reveal">
+        <h2 class="font-display font-black text-[clamp(28px,4vw,48px)] leading-tight text-chalk mb-6">
+          Early in the journey.<br><em class="text-silver">Honest about it.</em>
+        </h2>
+        <p class="font-sans text-base text-silver/70 leading-relaxed max-w-lg mb-6">
+          I don't have a wall of client testimonials yet — and I won't pretend I do. What I have is a genuine passion for building, a growing set of real projects, and the discipline to keep shipping.
+        </p>
+        <p class="font-sans text-base text-silver/70 leading-relaxed max-w-lg mb-10">
+          Every line of code I write is on GitHub. You can see exactly how I think, how I structure projects, and how I've grown. That's more honest than any quote I could put on a page.
+        </p>
+        <a href="https://github.com/ricchreign" target="_blank" rel="noopener"
+          class="inline-flex items-center gap-3 bg-chalk text-obsidian px-8 py-4 font-mono text-xs tracking-widest uppercase hover:bg-ash transition-colors">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
+          </svg>
+          View My GitHub
+        </a>
+      </div>
+
+      <!-- Right: Honest stats -->
+      <div class="lg:col-span-5 reveal" style="transition-delay:0.15s">
+        <div class="grid grid-cols-2 gap-px bg-chalk/10">
+          <div class="bg-obsidian p-6 hover:bg-chalk/[0.03] transition-colors">
+            <div class="font-display text-4xl font-black text-chalk mb-2">11</div>
+            <div class="font-mono text-xs text-silver/50 tracking-wider uppercase">Real projects<br>shipped</div>
+          </div>
+          <div class="bg-obsidian p-6 hover:bg-chalk/[0.03] transition-colors">
+            <div class="font-display text-4xl font-black text-chalk mb-2">100%</div>
+            <div class="font-mono text-xs text-silver/50 tracking-wider uppercase">Code on<br>GitHub</div>
+          </div>
+          <div class="bg-obsidian p-6 hover:bg-chalk/[0.03] transition-colors">
+            <div class="font-display text-4xl font-black text-chalk mb-2">0</div>
+            <div class="font-mono text-xs text-silver/50 tracking-wider uppercase">Fake<br>testimonials</div>
+          </div>
+          <div class="bg-obsidian p-6 hover:bg-chalk/[0.03] transition-colors">
+            <div class="font-display text-4xl font-black text-chalk mb-2">∞</div>
+            <div class="font-mono text-xs text-silver/50 tracking-wider uppercase">Willingness<br>to learn</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ CONTACT ═══════════════════════════════ -->
+<section id="contact" class="py-16 lg:py-32 bg-chalk/[0.02] border-t border-chalk/5 relative z-10">
+  <div class="max-w-7xl mx-auto px-6 lg:px-12">
+    <div class="flex items-center gap-3 mb-10 lg:mb-16 reveal">
+      <span class="font-mono text-xs tracking-widest text-silver/50 uppercase">06 — Contact</span>
+      <div class="flex-1 h-px bg-chalk/10"></div>
+    </div>
+
+    <div class="grid lg:grid-cols-12 gap-10 lg:gap-16">
+
+      <!-- Left: Info -->
+      <div class="lg:col-span-5 reveal">
+        <h2 class="font-display font-black text-[clamp(36px,4.5vw,56px)] leading-tight text-chalk mb-6">
+          Let's build<br><em class="text-silver">something</em><br>together.
+        </h2>
+        <p class="font-sans text-sm text-silver/60 leading-relaxed mb-10 max-w-sm">
+          Whether you have a project in mind, want to collaborate, or just want to say hello — my inbox is always open.
+        </p>
+
+        <div class="space-y-5">
+          <a href="mailto:adewoleomogbolahan@gmail.com" class="flex items-center gap-4 group">
+            <div class="w-10 h-10 border border-chalk/15 flex items-center justify-center group-hover:border-chalk/50 group-hover:bg-chalk/5 transition-all">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#f5f5f0" stroke-width="1" opacity="0.6">
+                <rect x="1" y="3" width="14" height="10" rx="1"/><path d="M1 3l7 6 7-6"/>
+              </svg>
+            </div>
+            <div>
+              <div class="font-mono text-[10px] text-silver/40 tracking-wider uppercase mb-0.5">Email</div>
+              <div class="font-sans text-sm text-chalk/80 group-hover:text-chalk transition-colors">adewoleomogbolahan@gmail.com</div>
+            </div>
+          </a>
+
+          <a href="https://wa.link/t46681" target="_blank" rel="noopener" class="flex items-center gap-4 group">
+            <div class="w-10 h-10 border border-chalk/15 flex items-center justify-center group-hover:border-chalk/50 group-hover:bg-chalk/5 transition-all">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="rgba(245,245,240,0.6)">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+              </svg>
+            </div>
+            <div>
+              <div class="font-mono text-[10px] text-silver/40 tracking-wider uppercase mb-0.5">WhatsApp</div>
+              <div class="font-sans text-sm text-chalk/80 group-hover:text-chalk transition-colors">Chat with me directly</div>
+            </div>
+          </a>
+
+          <div class="flex items-center gap-4">
+            <div class="w-10 h-10 border border-chalk/15 flex items-center justify-center">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="rgba(245,245,240,0.6)" stroke-width="1">
+                <circle cx="8" cy="7" r="3"/><path d="M8 1a6 6 0 016 6c0 4-6 9-6 9S2 11 2 7a6 6 0 016-6z"/>
+              </svg>
+            </div>
+            <div>
+              <div class="font-mono text-[10px] text-silver/40 tracking-wider uppercase mb-0.5">Location</div>
+              <div class="font-sans text-sm text-chalk/80">Lagos, Nigeria (Remote-ready)</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Socials -->
+        <div class="flex gap-3 mt-10">
+          <a href="https://github.com/ricchreign " class="w-10 h-10 border border-chalk/15 flex items-center justify-center hover:border-chalk/50 hover:bg-chalk/5 transition-all" aria-label="GitHub">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="rgba(245,245,240,0.6)">
+              <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
+            </svg>
+          </a>
+          <a href="https://www.linkedin.com/in/" class="w-10 h-10 border border-chalk/15 flex items-center justify-center hover:border-chalk/50 hover:bg-chalk/5 transition-all" aria-label="LinkedIn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="rgba(245,245,240,0.6)">
+              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+            </svg>
+          </a>
+          <a href="https://x.com/gbollyreign?s=21" class="w-10 h-10 border border-chalk/15 flex items-center justify-center hover:border-chalk/50 hover:bg-chalk/5 transition-all" aria-label="X">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="rgba(245,245,240,0.6)">
+              <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Right: Form -->
+      <div class="lg:col-span-7 reveal" style="transition-delay:0.15s">
+        <form id="contact-form" class="space-y-6" onsubmit="handleSubmit(event)">
+          <div class="grid sm:grid-cols-2 gap-6">
+            <div>
+              <label for="name">Your Name</label>
+              <input type="text" id="name" name="name" placeholder="John Doe" required />
+            </div>
+            <div>
+              <label for="email">Email Address</label>
+              <input type="email" id="email" name="email" placeholder="john@example.com" required />
+            </div>
+          </div>
+          <div>
+            <label for="subject">Subject</label>
+            <input type="text" id="subject" name="subject" placeholder="Project inquiry / Collaboration / Just saying hi" />
+          </div>
+          <div>
+            <label for="budget">Budget Range (optional)</label>
+            <select id="budget" name="budget" style="background:transparent;border:1px solid rgba(245,245,240,0.15);color:#f5f5f0;outline:none;font-family:'DM Sans',sans-serif;width:100%;padding:14px 16px;border-radius:2px;transition:border-color 0.2s;-webkit-appearance:none;">
+              <option value="" style="background:#0a0a0a">Select budget range</option>
+              <option value="500k" style="background:#0a0a0a">Under ₦500,000</option>
+              <option value="500k-1m" style="background:#0a0a0a">₦500,000 – ₦1,000,000</option>
+              <option value="1m-3m" style="background:#0a0a0a">₦1,000,000 – ₦3,000,000</option>
+              <option value="3m+" style="background:#0a0a0a">₦3,000,000+</option>
+              <option value="discuss" style="background:#0a0a0a">Let's discuss</option>
+            </select>
+          </div>
+          <div>
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="5" placeholder="Tell me about your project, goals, timeline, or anything else that's on your mind..." required style="resize:vertical"></textarea>
+          </div>
+
+          <div class="flex flex-col gap-3">
+            <button type="submit" class="w-full bg-chalk text-obsidian px-8 py-4 font-mono text-xs tracking-widest uppercase hover:bg-ash transition-colors">
+              Send Message →
+            </button>
+            <a href="https://wa.link/t46681" target="_blank" rel="noopener"
+              class="flex items-center justify-center gap-2 border border-chalk/20 text-chalk px-8 py-4 font-mono text-xs tracking-widest uppercase hover:border-chalk hover:bg-chalk/5 transition-all">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+              </svg>
+              WhatsApp
+            </a>
+          </div>
+
+          <div id="form-msg" class="font-mono text-xs tracking-wider hidden"></div>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ FOOTER ═══════════════════════════════ -->
+<footer class="border-t border-chalk/10 py-10 relative z-10">
+  <div class="max-w-7xl mx-auto px-6 lg:px-12 flex flex-col sm:flex-row items-center justify-between gap-4">
+    <div class="flex items-center gap-3">
+      <div class="w-6 h-6 border border-chalk/20 flex items-center justify-center">
+        <span class="font-mono text-[9px] text-chalk/40">YA!</span>
+      </div>
+      <span class="font-mono text-xs text-silver/40">YADIR</span>
+    </div>
+    <div class="font-mono text-xs text-silver/30">
+      © <span id="year"></span> Adewole Omogbolahan
+    </div>
+    <div class="font-mono text-xs text-silver/30">
+      </span>All rights reserved.
+    </div>
+    <div class="font-mono text-xs text-silver/30">
+      Built with <span class="text-chalk/40">Tailwind CSS</span>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
